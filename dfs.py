@@ -29,3 +29,5 @@ try:
   print("Shortest path:", path)
 except ValueError as e:
   print("Error:", e)
+
+  # НЕ Очень длинный и важный комментарий
