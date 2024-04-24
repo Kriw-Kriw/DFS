@@ -1,27 +1,33 @@
 def dfs_with_length_and_path(graph, start, end):
-    visited = set()
-    stack = [(start, 0, [start])]
-    while stack:
-        vertex, length, path = stack.pop()
+  if start not in graph or end not in graph:
+    raise ValueError("Invalid start or end vertex")
+  visited = set()
+  stack = [(start, 0, [start])]
+  while stack:
+    vertex, length, path = stack.pop()
     if vertex == end:
-        return length, path
+      return length, path
     if vertex not in visited:
-        visited.add(vertex)
-        for neighbor in graph[vertex] - visited:
-            new_path = path + [neighbor]
-            stack.append((neighbor, length + 1, new_path))
-    return -1, []
+      visited.add(vertex)
+      for neighbor in graph.get(vertex, []):
+        if neighbor not in visited:
+          new_path = path + [neighbor]
+          stack.append((neighbor, length + 1, new_path))
 
-
+  return -1, []
 graph = {
-    1: {3},
-    2: {1, 4},
-    3: {2},
-    4: {2, 3}
+  1: [2, 3],
+  2: [1, 4],
+  3: [1],
+  4: [2]
 }
-
 start_vertex = 1
-end_vertex = 3
-length, path = dfs_with_length_and_path(graph, start_vertex, end_vertex)
-print("Length of the shortest path:", length)
-print("Shortest path:", path)
+end_vertex = 4
+try:
+  length, path = dfs_with_length_and_path(graph, start_vertex, end_vertex)
+  print("Length of the shortest path:", length)
+  print("Shortest path:", path)
+except ValueError as e:
+  print("Error:", e)
+
+  # НЕ Очень длинный и важный комментарий
