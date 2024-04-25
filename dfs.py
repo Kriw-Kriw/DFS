@@ -1,4 +1,5 @@
 # я твой сир, а ты мой пайтон
+conflict = 1
 def dfs_with_length_and_path(graph, start, end):
   if start not in graph or end not in graph:
     raise ValueError("Invalid start or end vertex")
@@ -23,6 +24,7 @@ graph = {
   4: [2]
 }
 start_vertex = 1
+#попытка созздать конфликт репов
 end_vertex = 4
 try:
   length, path = dfs_with_length_and_path(graph, start_vertex, end_vertex)
