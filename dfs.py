@@ -1,3 +1,4 @@
+# Комментарий который нужно будет поменять
 def dfs_with_length_and_path(graph, start, end):
   if start not in graph or end not in graph:
     raise ValueError("Invalid start or end vertex")
