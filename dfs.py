@@ -34,3 +34,20 @@ except ValueError as e:
   print("Error:", e)
 
   # НЕ Очень длинный и важный комментарий
+def dfs_with_length_and_path2(graph, start, end):
+  if start not in graph or end not in graph:
+    raise ValueError("Invalid start or end vertex")
+  visited = set()
+  stack = [(start, 0, [start])]
+  while stack:
+    vertex, length, path = stack.pop()
+    if vertex == end:
+      return length, path
+    if vertex not in visited:
+      visited.add(vertex)
+      for neighbor in graph.get(vertex, []):
+        if neighbor not in visited:
+          new_path = path + [neighbor]
+          stack.append((neighbor, length + 1, new_path))
+
+  return -1, []
