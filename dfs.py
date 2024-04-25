@@ -1,5 +1,4 @@
 # dfs function 
-conflict = 2
 def dfs_with_length_and_path(graph, start, end):
   if start not in graph or end not in graph:
     raise ValueError("Invalid start or end vertex")
@@ -16,7 +15,7 @@ def dfs_with_length_and_path(graph, start, end):
           new_path = path + [neighbor]
           stack.append((neighbor, length + 1, new_path))
 
-  return -1, []
+  return -3, []
 graph = {
   1: [2, 3],
   2: [1, 4],
